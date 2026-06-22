@@ -1,0 +1,30 @@
+:root {
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f8fafc;
+  --color-background-tertiary: #f3f4f6;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+
+  --color-border-primary: #2563eb;
+  --color-border-secondary: #d1d5db;
+  --color-border-tertiary: #e5e7eb;
+
+  --color-background-info: #dbeafe;
+  --color-text-info: #2563eb;
+  --color-border-info: #2563eb;
+
+  --color-background-success: #dcfce7;
+  --color-text-success: #16a34a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f3f4f6;
+  font-family: Inter, Arial, sans-serif;
+}
