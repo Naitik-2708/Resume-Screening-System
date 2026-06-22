@@ -21,39 +21,35 @@ const ATSDashboard = () => {
     fetchCandidates();
   }, []);
 
-const fetchCandidates = async () => {
-  const { data, error } = await supabase
-    .from('candidates')
-    .select('*')
-    .order('score', { ascending: false });
+  const fetchCandidates = async () => {
+    const { data, error } = await supabase
+      .from('candidates')
+      .select('*')
+      .order('score', { ascending: false });
 
-  console.log("DATA FROM SUPABASE:", data);
-  console.log("ERROR FROM SUPABASE:", error);
+    if (error) {
+      console.error(error);
+      return;
+    }
 
-  if (error) {
-    console.error(error);
-    return;
-  }
+const formatted = data.map((c) => ({
+  id: c.id,
+  name: c.candidate_name || 'Unknown',
+  role: c.current_position || 'N/A',
+  experience: c.experience_years || 0,
+  yearsExp: `${c.experience_years || 0} years`,
+  matchScore: c.score || 0,
+  summary: c.summary || '',
+  education: c.education || '',
+  matchedSkills: c.matched_skills || [],
+  skills: c.matched_skills || [],
+  highlights: c.strengths || [],
+  appliedDate: new Date().toISOString(),
+  matchReason: c.recommendation || ''
+}));
 
-  const formatted = data.map((c) => ({
-    id: c.id,
-    name: c.candidate_name,
-    role: c.current_position || c.current_role || "Not Specified",
-    experience: c.experience_years || 0,
-    matchScore: c.score || 0,
-    summary: c.summary || "",
-    education: c.education || "",
-    matchedSkills: c.matched_skills || [],
-    skills: c.matched_skills || [],
-    highlights: c.strengths || [],
-    appliedDate: new Date().toISOString(),
-    matchReason: c.recommendation || ""
-  }));
-
-  console.log("FORMATTED DATA:", formatted);
-
-  setCandidates(formatted);
-};
+    setCandidates(formatted);
+  };
 
 
   // Get unique skills from all candidates
@@ -320,7 +316,7 @@ const fetchCandidates = async () => {
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                   <div style={{ textAlign: 'right' }}>
-                    <p style={{ fontSize: '11px', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.3px', margin: '0 0 4px 0', fontWeight: '500' }}>Match score</p>
+                    <p style={{ fontSize: '11px', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.3px', margin: '0 0 4px 0', fontWeight: '500' }}>ATS score</p>
                     <div
                       style={{
                         width: '60px',
@@ -421,7 +417,7 @@ const fetchCandidates = async () => {
                 }}
               >
                 <div>
-                  <p style={{ fontSize: '12px', opacity: 0.9, margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.3px' }}>AI match score</p>
+                  <p style={{ fontSize: '12px', opacity: 0.9, margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.3px' }}>ATS score</p>
                   <p style={{ fontSize: '32px', fontWeight: '700', margin: 0 }}>{selectedCandidate.matchScore}%</p>
                 </div>
                 <div style={{ fontSize: '48px' }}>⚡</div>
