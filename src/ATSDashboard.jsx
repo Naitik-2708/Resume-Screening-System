@@ -21,35 +21,39 @@ const ATSDashboard = () => {
     fetchCandidates();
   }, []);
 
-  const fetchCandidates = async () => {
-    const { data, error } = await supabase
-      .from('candidates')
-      .select('*')
-      .order('score', { ascending: false });
+const fetchCandidates = async () => {
+  const { data, error } = await supabase
+    .from('candidates')
+    .select('*')
+    .order('score', { ascending: false });
 
-    if (error) {
-      console.error(error);
-      return;
-    }
+  console.log("DATA FROM SUPABASE:", data);
+  console.log("ERROR FROM SUPABASE:", error);
 
-const formatted = data.map((c) => ({
-  id: c.id,
-  name: c.candidate_name || 'Unknown',
-  role: c.current_position || 'N/A',
-  experience: c.experience_years || 0,
-  yearsExp: `${c.experience_years || 0} years`,
-  matchScore: c.score || 0,
-  summary: c.summary || '',
-  education: c.education || '',
-  matchedSkills: c.matched_skills || [],
-  skills: c.matched_skills || [],
-  highlights: c.strengths || [],
-  appliedDate: new Date().toISOString(),
-  matchReason: c.recommendation || ''
-}));
+  if (error) {
+    console.error(error);
+    return;
+  }
 
-    setCandidates(formatted);
-  };
+  const formatted = data.map((c) => ({
+    id: c.id,
+    name: c.candidate_name,
+    role: c.current_position || c.current_role || "Not Specified",
+    experience: c.experience_years || 0,
+    matchScore: c.score || 0,
+    summary: c.summary || "",
+    education: c.education || "",
+    matchedSkills: c.matched_skills || [],
+    skills: c.matched_skills || [],
+    highlights: c.strengths || [],
+    appliedDate: new Date().toISOString(),
+    matchReason: c.recommendation || ""
+  }));
+
+  console.log("FORMATTED DATA:", formatted);
+
+  setCandidates(formatted);
+};
 
 
   // Get unique skills from all candidates
