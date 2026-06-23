@@ -22,6 +22,7 @@ const ATSDashboard = () => {
   }, []);
 
   const fetchCandidates = async () => {
+    
     const { data, error } = await supabase
       .from('candidates')
       .select('*')
@@ -31,7 +32,7 @@ const ATSDashboard = () => {
       console.error(error);
       return;
     }
-
+    
     const formatted = data.map((c) => ({
       id: c.id,
       name: c.candidate_name || 'Unknown',
@@ -47,8 +48,12 @@ const ATSDashboard = () => {
       highlights: c.strengths || [],
       appliedDate: new Date().toISOString(),
       matchReason: c.recommendation || ''
-    }));
+    }));  
 
+
+console.log("Candidate:", formatted[0]);
+console.log("Skills:", formatted[0]?.skills);
+console.log("Highlights:", formatted[0]?.highlights);
     setCandidates(formatted);
   };
 
