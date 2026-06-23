@@ -25,28 +25,29 @@ const ATSDashboard = () => {
     const { data, error } = await supabase
       .from('candidates')
       .select('*')
-      .order('score', { ascending: false });
+      .order('final_score', { ascending: false });
 
     if (error) {
       console.error(error);
       return;
     }
 
-const formatted = data.map((c) => ({
-  id: c.id,
-  name: c.candidate_name || 'Unknown',
-  role: c.current_position || 'N/A',
-  experience: c.experience_years || 0,
-  yearsExp: `${c.experience_years || 0} years`,
-  matchScore: c.score || 0,
-  summary: c.summary || '',
-  education: c.education || '',
-  matchedSkills: c.matched_skills || [],
-  skills: c.matched_skills || [],
-  highlights: c.strengths || [],
-  appliedDate: new Date().toISOString(),
-  matchReason: c.recommendation || ''
-}));
+    const formatted = data.map((c) => ({
+      id: c.id,
+      name: c.candidate_name || 'Unknown',
+      role: c.current_position || 'N/A',
+      experience: c.experience_years || 0,
+      yearsExp: `${c.experience_years || 0} years`,
+      matchScore: c.final_score || 0,
+      atsScore: c.score || 0,
+      summary: c.summary || '',
+      education: c.education || '',
+      matchedSkills: c.matched_skills || [],
+      skills: c.matched_skills || [],
+      highlights: c.strengths || [],
+      appliedDate: new Date().toISOString(),
+      matchReason: c.recommendation || ''
+    }));
 
     setCandidates(formatted);
   };
@@ -63,19 +64,19 @@ const formatted = data.map((c) => ({
   const filteredCandidates = useMemo(() => {
     let result = candidates.filter(candidate => {
       const matchesSearch = candidate.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           candidate.role.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      const matchesScore = candidate.matchScore >= filters.minScore && 
-                          candidate.matchScore <= filters.maxScore;
-      
+        candidate.role.toLowerCase().includes(searchQuery.toLowerCase());
+
+      const matchesScore = candidate.matchScore >= filters.minScore &&
+        candidate.matchScore <= filters.maxScore;
+
       const matchesExp = filters.experience === 'all' ||
-                        (filters.experience === 'junior' && candidate.experience < 3) ||
-                        (filters.experience === 'mid' && candidate.experience >= 3 && candidate.experience < 6) ||
-                        (filters.experience === 'senior' && candidate.experience >= 6);
-      
+        (filters.experience === 'junior' && candidate.experience < 3) ||
+        (filters.experience === 'mid' && candidate.experience >= 3 && candidate.experience < 6) ||
+        (filters.experience === 'senior' && candidate.experience >= 6);
+
       const matchesSkills = filters.skills.length === 0 ||
-                           filters.skills.some(skill => candidate.skills.includes(skill));
-      
+        filters.skills.some(skill => candidate.skills.includes(skill));
+
       return matchesSearch && matchesScore && matchesExp && matchesSkills;
     });
 
@@ -150,7 +151,7 @@ const formatted = data.map((c) => ({
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', marginBottom: '2rem' }}>
             {/* Match Score Range */}
             <div>
-              <label style={{ display: 'block', fontSize: '12px', color: 'var(--color-text-secondary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Match score</label>
+              <label style={{ display: 'block', fontSize: '12px', color: 'var(--color-text-secondary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Recommendation score</label>
               <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                 <input
                   type="range"
@@ -316,7 +317,7 @@ const formatted = data.map((c) => ({
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                   <div style={{ textAlign: 'right' }}>
-                    <p style={{ fontSize: '11px', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.3px', margin: '0 0 4px 0', fontWeight: '500' }}>ATS score</p>
+                    <p style={{ fontSize: '11px', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.3px', margin: '0 0 4px 0', fontWeight: '500' }}>Recommendation score</p>
                     <div
                       style={{
                         width: '60px',
@@ -415,9 +416,21 @@ const formatted = data.map((c) => ({
                   justifyContent: 'space-between',
                   alignItems: 'center'
                 }}
+
               >
+                <div
+                  style={{
+                    marginTop: '15px',
+                    padding: '12px',
+                    background: 'rgba(255,255,255,0.25)',
+                    borderRadius: '8px',
+                    border: '1px solid #e5e7eb'
+                  }}
+                >
+                  <strong>ATS Score:</strong> {selectedCandidate.atsScore}%
+                </div>
                 <div>
-                  <p style={{ fontSize: '12px', opacity: 0.9, margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.3px' }}>ATS score</p>
+                  <p style={{ fontSize: '12px', opacity: 0.9, margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.3px' }}>Recommendation score</p>
                   <p style={{ fontSize: '32px', fontWeight: '700', margin: 0 }}>{selectedCandidate.matchScore}%</p>
                 </div>
                 <div style={{ fontSize: '48px' }}>⚡</div>
