@@ -39,7 +39,7 @@ const ATSDashboard = () => {
       role: c.current_position || 'N/A',
       experience: c.experience_years || 0,
       yearsExp: `${c.experience_years || 0} years`,
-      matchScore: c.final_score || 0,
+       matchScore: (c.final_score || 0) * 10,
       atsScore: c.score || 0,
       summary: c.summary || '',
       education: c.education || '',
