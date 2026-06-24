@@ -1,16 +1,85 @@
-# React + Vite
+# AI Resume Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered Resume Analyzer built using n8n automation workflows. The system extracts resume data, analyzes skills, calculates ATS compatibility scores, and generates structured feedback.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Resume Upload Processing
+* PDF Text Extraction
+* AI-Powered Resume Analysis
+* ATS Score Calculation
+* Skill Matching
+* Structured JSON Output
+* Dashboard Visualization
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* n8n
+* Gemini API / OpenAI
+* JavaScript
+* Webhooks
+* MongoDB (if used)
 
-## Expanding the ESLint configuration
+## Workflow Architecture
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Resume Upload
+    ↓
+PDF Parser
+    ↓
+AI Analysis
+    ↓
+ATS Score Generation
+    ↓
+  Dashboard
+
+## Screenshots
+
+### Workflow
+
+<img width="1351" height="821" alt="image" src="https://github.com/user-attachments/assets/79bbe89e-10a4-4a73-8230-4f1a59f2287d" />
+
+
+### Dashboard
+
+
+
+## Installation
+
+1. Clone this repository
+2. Import the workflow JSON into n8n
+3. Configure API credentials
+4. Activate the workflow
+
+## Environment Variables
+
+OPENAI_API_KEY=
+GEMINI_API_KEY=
+DATABASE_URL=
+
+## Sample Output
+
+{
+"candidate_name": "XYCVBNM Doe",
+"score": 82,
+"matched_skills": ["React", "Node.js"]
+}
+
+## Key Learnings
+
+* Workflow Automation
+* API Integration
+* AI Processing
+* Data Transformation
+* Error Handling
+
+## Project Status
+
+⚠️ Archived Project
+
+This project is no longer actively maintained. The workflow and dashboard are preserved for portfolio and learning purposes.
+
+## Author
+
+Naitik Kr. Bharduwaj 
+
+B.Tech CSE |Automation Developer
