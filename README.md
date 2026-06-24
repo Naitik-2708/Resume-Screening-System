@@ -4,35 +4,56 @@ An AI-powered Resume Analyzer built using n8n automation workflows. The system e
 
 ## Features
 
-* Resume Upload Processing
+* Resume Upload Processing from mail trigger 
 * PDF Text Extraction
 * AI-Powered Resume Analysis
 * ATS Score Calculation
-* Skill Matching
+* Skill Matching from JD
 * Structured JSON Output
 * Dashboard Visualization
 
 ## Tech Stack
 
 * n8n
-* Gemini API / OpenAI
+* Groq API
 * JavaScript
 * Webhooks
-* MongoDB (if used)
+* SuperBase
 
 ## Workflow Architecture
 
-Resume Upload
-    ↓
-PDF Parser
-    ↓
-AI Analysis
-    ↓
-ATS Score Generation
-    ↓
-  Dashboard
+1. **Candidate sends a resume via email**
 
-## Screenshots
+   * The system automatically receives incoming resumes through a dedicated email inbox.
+
+2. **Resume is extracted and processed**
+
+   * The PDF file is downloaded and its text content is extracted using n8n.
+
+3. **AI analyzes the resume**
+
+   * The extracted content is sent to an AI model to identify skills, experience, education, and other relevant information.
+
+4. **ATS compatibility score is generated**
+
+   * The resume is evaluated against predefined hiring criteria and an ATS-style score is calculated.
+
+5. **Results are stored and displayed**
+
+   * Analysis results, scores, and feedback are saved and displayed on the dashboard for easy review by recruiters.
+
+ ### Workflow Flow
+
+📧 Resume Received via Email
+          ⬇️
+📄 PDF Text Extraction
+          ⬇️
+🤖 AI Resume Analysis
+          ⬇️
+📊 ATS Score Calculation
+          ⬇️
+📈 Dashboard & Recruiter View
+
 
 ### Workflow
 
@@ -41,6 +62,7 @@ ATS Score Generation
 
 ### Dashboard
 
+<img width="1151" height="822" alt="image" src="https://github.com/user-attachments/assets/2dd8e155-573d-4670-845e-7ae5fa571717" />
 
 
 ## Installation
@@ -52,9 +74,9 @@ ATS Score Generation
 
 ## Environment Variables
 
-OPENAI_API_KEY=
-GEMINI_API_KEY=
-DATABASE_URL=
+OPENAI_API_KEY
+GEMINI_API_KEY
+DATABASE_URL
 
 ## Sample Output
 
@@ -71,6 +93,7 @@ DATABASE_URL=
 * AI Processing
 * Data Transformation
 * Error Handling
+* Database Management
 
 ## Project Status
 
