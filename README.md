@@ -42,17 +42,20 @@ An AI-powered Resume Analyzer built using n8n automation workflows. The system e
 
    * Analysis results, scores, and feedback are saved and displayed on the dashboard for easy review by recruiters.
 
- ### Workflow Flow
+## Workflow Flow
 
-📧 Resume Received via Email
-          ⬇️
-📄 PDF Text Extraction
-          ⬇️
-🤖 AI Resume Analysis
-          ⬇️
-📊 ATS Score Calculation
-          ⬇️
-📈 Dashboard & Recruiter View
+```text
+Email Resume
+     ↓
+Extract PDF Content
+     ↓
+Analyze Resume with AI
+     ↓
+Generate ATS Score
+     ↓
+Display Results on Dashboard
+```
+
 
 
 ### Workflow
@@ -65,6 +68,9 @@ An AI-powered Resume Analyzer built using n8n automation workflows. The system e
 <img width="1151" height="822" alt="image" src="https://github.com/user-attachments/assets/2dd8e155-573d-4670-845e-7ae5fa571717" />
 
 
+<img width="1150" height="812" alt="image" src="https://github.com/user-attachments/assets/c0643ca9-36d3-48ea-884d-3622922587a5" />
+
+
 ## Installation
 
 1. Clone this repository
@@ -74,8 +80,7 @@ An AI-powered Resume Analyzer built using n8n automation workflows. The system e
 
 ## Environment Variables
 
-OPENAI_API_KEY
-GEMINI_API_KEY
+groq_API_KEY
 DATABASE_URL
 
 ## Sample Output
