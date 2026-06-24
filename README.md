@@ -1,10 +1,10 @@
-# 🚀 AI Resume Analyzer
+#  AI Resume Analyzer
 
 An AI-powered recruitment automation system built with **n8n**, **Groq AI**, and **Supabase** that automatically analyzes resumes received via email, matches them against job descriptions, generates ATS scores, and displays results on a recruiter dashboard.
 
 ---
 
-## 🎯 Problem Statement
+##  Problem Statement
 
 Recruiters often spend significant time manually reviewing resumes and comparing them against job requirements.
 
@@ -51,7 +51,7 @@ This workflow automates the entire screening process by:
 
 ---
 
-## 🔄 Workflow Architecture
+##  Workflow Architecture
 
 ### How It Works
 
@@ -83,23 +83,22 @@ This workflow automates the entire screening process by:
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 ### n8n Workflow
 
-![Workflow](screenshots/workflow.png)
+<img width="1350" height="821" alt="image" src="https://github.com/user-attachments/assets/5c0791d8-00ec-4cc6-bcd1-8d3967a6142e" />
+
 
 ### Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+<img width="1105" height="822" alt="image" src="https://github.com/user-attachments/assets/7bd3022b-5b52-432b-be34-f2f7df33ed3b" />
 
-### Sample Analysis
 
-![Analysis](screenshots/output.png)
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 1. Clone the repository
 2. Import `workflow.json` into n8n
@@ -110,7 +109,7 @@ This workflow automates the entire screening process by:
 
 ---
 
-## 🔑 Required Credentials
+##  Required Credentials
 
 * Groq API Key
 * Supabase Credentials
@@ -146,7 +145,7 @@ This workflow automates the entire screening process by:
 
 ---
 
-## 🚧 Project Status
+##  Project Status
 
 Archived Project
 
