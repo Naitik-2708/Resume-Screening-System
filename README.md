@@ -1,113 +1,161 @@
-# AI Resume Analyzer
+# 🚀 AI Resume Analyzer
 
-An AI-powered Resume Analyzer built using n8n automation workflows. The system extracts resume data, analyzes skills, calculates ATS compatibility scores, and generates structured feedback.
+An AI-powered recruitment automation system built with **n8n**, **Groq AI**, and **Supabase** that automatically analyzes resumes received via email, matches them against job descriptions, generates ATS scores, and displays results on a recruiter dashboard.
 
-## Features
+---
 
-* Resume Upload Processing from mail trigger 
-* PDF Text Extraction
-* AI-Powered Resume Analysis
-* ATS Score Calculation
-* Skill Matching from JD
-* Structured JSON Output
-* Dashboard Visualization
+## 🎯 Problem Statement
 
-## Tech Stack
+Recruiters often spend significant time manually reviewing resumes and comparing them against job requirements.
 
-* n8n
-* Groq API
-* JavaScript
-* Webhooks
-* SuperBase
+This workflow automates the entire screening process by:
 
-## Workflow Architecture
+* Receiving resumes via email
+* Extracting PDF content
+* Analyzing candidate profiles using AI
+* Matching skills against job descriptions
+* Generating ATS compatibility scores
+* Displaying results on a dashboard
 
-1. **Candidate sends a resume via email**
+---
 
-   * The system automatically receives incoming resumes through a dedicated email inbox.
+## ✨ Features
 
-2. **Resume is extracted and processed**
+✅ Automated Resume Processing
 
-   * The PDF file is downloaded and its text content is extracted using n8n.
+✅ Email-Based Resume Collection
 
-3. **AI analyzes the resume**
+✅ PDF Text Extraction
 
-   * The extracted content is sent to an AI model to identify skills, experience, education, and other relevant information.
+✅ AI-Powered Resume Analysis
 
-4. **ATS compatibility score is generated**
+✅ ATS Score Generation
 
-   * The resume is evaluated against predefined hiring criteria and an ATS-style score is calculated.
+✅ Skill Matching Against Job Description
 
-5. **Results are stored and displayed**
+✅ Structured Candidate Feedback
 
-   * Analysis results, scores, and feedback are saved and displayed on the dashboard for easy review by recruiters.
+✅ Dashboard Visualization
 
-## Workflow Flow
+---
+
+## 🛠 Tech Stack
+
+| Technology | Purpose             |
+| ---------- | ------------------- |
+| n8n        | Workflow Automation |
+| Groq API   | AI Analysis         |
+| JavaScript | Data Processing     |
+| Supabase   | Database & Storage  |
+| Webhooks   | Workflow Triggering |
+
+---
+
+## 🔄 Workflow Architecture
+
+### How It Works
+
+1. Candidate submits a resume via email.
+2. n8n automatically receives the email attachment.
+3. Resume content is extracted from the PDF.
+4. AI analyzes skills, experience, and qualifications.
+5. ATS score is calculated based on job requirements.
+6. Results are stored in Supabase.
+7. Recruiters view the analysis through the dashboard.
+
+### Workflow Flow
 
 ```text
-Email Resume
-     ↓
-Extract PDF Content
-     ↓
-Analyze Resume with AI
-     ↓
-Generate ATS Score
-     ↓
-Display Results on Dashboard
+📧 Resume Received
+        ↓
+📄 PDF Extraction
+        ↓
+🤖 AI Analysis
+        ↓
+🎯 JD Skill Matching
+        ↓
+📊 ATS Score Generation
+        ↓
+🗄 Store in Supabase
+        ↓
+📈 Recruiter Dashboard
 ```
 
+---
 
+## 📸 Screenshots
 
-### Workflow
+### n8n Workflow
 
-<img width="1351" height="821" alt="image" src="https://github.com/user-attachments/assets/79bbe89e-10a4-4a73-8230-4f1a59f2287d" />
-
+![Workflow](screenshots/workflow.png)
 
 ### Dashboard
 
-<img width="1151" height="822" alt="image" src="https://github.com/user-attachments/assets/2dd8e155-573d-4670-845e-7ae5fa571717" />
+![Dashboard](screenshots/dashboard.png)
 
+### Sample Analysis
 
-<img width="1150" height="812" alt="image" src="https://github.com/user-attachments/assets/c0643ca9-36d3-48ea-884d-3622922587a5" />
+![Analysis](screenshots/output.png)
 
+---
 
-## Installation
+## ⚙️ Installation
 
-1. Clone this repository
-2. Import the workflow JSON into n8n
-3. Configure API credentials
-4. Activate the workflow
+1. Clone the repository
+2. Import `workflow.json` into n8n
+3. Configure required credentials
+4. Connect Supabase
+5. Add Groq API credentials
+6. Activate the workflow
 
-## Environment Variables
+---
 
-groq_API_KEY
-DATABASE_URL
+## 🔑 Required Credentials
 
-## Sample Output
+* Groq API Key
+* Supabase Credentials
+* Email Trigger Credentials
 
+> Credentials are not included in this repository for security reasons.
+
+---
+
+## 📊 Sample Output
+
+```json
 {
-"candidate_name": "XYCVBNM Doe",
-"score": 82,
-"matched_skills": ["React", "Node.js"]
+  "candidate_name": "John Doe",
+  "score": 82,
+  "matched_skills": [
+    "React",
+    "Node.js"
+  ]
 }
+```
 
-## Key Learnings
+---
 
-* Workflow Automation
-* API Integration
-* AI Processing
-* Data Transformation
-* Error Handling
-* Database Management
+## 📚 Key Learnings
 
-## Project Status
+* Workflow Automation using n8n
+* AI Integration with Groq
+* Resume Parsing & Analysis
+* Database Management with Supabase
+* Error Handling & Validation
+* End-to-End Recruitment Automation
 
-⚠️ Archived Project
+---
+
+## 🚧 Project Status
+
+Archived Project
 
 This project is no longer actively maintained. The workflow and dashboard are preserved for portfolio and learning purposes.
 
-## Author
+---
 
-Naitik Kr. Bharduwaj 
+## 👨‍💻 Author
 
-B.Tech CSE |Automation Developer
+Naitik Kr. Bharduwaj
+
+B.Tech CSE | Automation Developer
